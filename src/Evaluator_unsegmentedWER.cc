@@ -13,6 +13,8 @@ double Evaluator_unsegmentedWER::_evaluate2(const HypContainer& hyps, std::ostre
   std::vector<std::vector<unsigned int> > A;
   std::vector<unsigned int> B;
   std::vector<std::string> stringB;
+  cerr << "Taille " <<(int)hyps.size() <<endl;
+  cerr << "Taille " <<(int)mref.size() <<endl;
 
   A.resize(mref[0].size()); /** NOTE: different segments can have different number of references!
                              -> some sents must have "double" same references, before this can be used! **/
@@ -210,16 +212,21 @@ double Evaluator_unsegmentedWER::computeSpecialWER(const std::vector<std::vector
   }
   // Backtracing from here:
   s = S; // S - total number of segments
-  k = J; 
+  k = J;
   unsigned int refNo=0;
   do
   {
+  cerr << "Test : "<< S << "\t" << s << "\t" << (int)BP[k].size() << "\t" << (int)BC[k].size() << "\t" << (int)BR[k].size() << "\t" << (int)boundary.size() <<endl;
+      if (BP[k].size() > 0)
+      {
       boundary[s] = BP[k][s];
       sentCosts[s] = BC[k][s];
       refNo = BR[k][s];
       refLength_ += mref[s-1][refNo].size(); // add up the length of the best aligned references
       k = BP[k][s];
+      }
       s = s-1;
+      
   }
   while(s > 0);
   return m[0][I].cost; // total costs - the same for all references (since a merge is always the last step)

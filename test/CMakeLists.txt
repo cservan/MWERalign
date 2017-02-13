@@ -4,7 +4,7 @@ PROJECT(mwerAlign)
 include_directories(BEFORE ${CMAKE_SOURCE_DIR}/src)
 
 SET(mwerAlign_BIN_SRCS
-   mwerAlign-test.cc
+   mwerAlign.cc
    ${CMAKE_SOURCE_DIR}/src/SimpleText2.cc
    ${CMAKE_SOURCE_DIR}/src/Evaluator.cc
    ${CMAKE_SOURCE_DIR}/src/Evaluator_unsegmentedWER.cc

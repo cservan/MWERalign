@@ -9,6 +9,7 @@
 
 void MwerSegmenter::mwerAlign(const std::string& ref, const std::string& hyp, std::string& result)
 {
+  cerr << ref << endl << hyp << endl;
   std::istringstream strRef(ref), strHyp(hyp);
   E->loadrefsFromStream(strRef);
   E->setOptions(maxER_, human_);

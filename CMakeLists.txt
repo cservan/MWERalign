@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 2.6)
 PROJECT(mwerAlign)
 
 #if you don't want the full compiler output, remove the following line
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x ")
 SET(CMAKE_VERBOSE_MAKEFILE ON)
 #SET( CMAKE_CXX_FLAGS " -Wno-deprecated " CACHE STRING "Flags used by the C++ compiler" FORCE )
 #add_definitions(-DCMAKE_INSTALL_PREFIX=YOUR INSTALL DIR HERE!!!)

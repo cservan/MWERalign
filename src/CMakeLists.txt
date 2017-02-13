@@ -11,5 +11,5 @@ set(mwerAlign_LIB_SRCS
 
 add_library(mwerAlignLib STATIC ${mwerAlign_LIB_SRCS})
 install(TARGETS mwerAlignLib DESTINATION lib)
-install(FILES Evaluator.hh Evaluator_unsegmentedWER.hh IOfile.hh mwerAlign.cc SimpleText2.hh gzstream.h DESTINATION include)
+install(FILES Evaluator.hh Evaluator_unsegmentedWER.hh IOfile.hh mwerAlign.cc SimpleText2.hh gzstream.hh DESTINATION include)
 
