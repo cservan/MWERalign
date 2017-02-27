@@ -1,4 +1,11 @@
 # MWERalign
 If you are using it, please cite :
 
-	E. Matusov, G. Leusch, O. Bender, and H. Ney,“Evaluating machine translation output with automatic sentence segmentation,” in International Workshop on Spoken Language Translation, Pittsburgh, PA, USA, Oct. 2005, pp. 148–154.
+	@inproceedings{matusov2005evaluating,
+ 	  title={Evaluating machine translation output with automatic sentence segmentation.},
+	  author={Matusov, Evgeny and Leusch, Gregor and Bender, Oliver and Ney, Hermann and others},
+	  booktitle={IWSLT 2005},
+	  pages={138--144},
+	  year={2005}
+	}
+
