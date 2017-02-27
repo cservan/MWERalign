@@ -68,7 +68,14 @@ namespace TextNS {
     return rv;
   }
 
-  inline Sentence makeTokenSent(const std::string& s);
+  inline Sentence makeTokenSent(const std::string& s) {
+    Sentence rv;
+    std::istringstream is(s);
+    std::copy(std::istream_iterator<std::string>(is),
+              std::istream_iterator<std::string>(),
+              std::back_inserter(rv));
+    return rv;
+  }
 
   template<class T>
     void read(const std::string& fn,T& x) {
