@@ -44,6 +44,7 @@ public:
   ~Evaluator_unsegmentedWER() {}
   
   double _evaluate2(const HypContainer& hyps, std::ostream& out) const;
+  double _evaluate2(const HypContainer& hyps, const HypContainer& hypsBi, std::ostream& out) const;
 
   double _evaluate(const HypContainer& hyps) const {
     return _evaluate2(hyps, std::cout);

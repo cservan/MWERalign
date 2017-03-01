@@ -44,6 +44,7 @@ struct option_plus {
 static vector<option_plus> options_plus = {
     {"help",          no_argument,       0, 'h', "print this help message"},
     {"hyp",        required_argument, 0, 's', "hypopthesis side of the text to align"},
+    {"hyp_bi",        required_argument, 0, 'b', "bitext of the hypopthesis side of the text to align [optional]"},
     {"ref",        required_argument, 0, 't', "reference side of the text to align"},
     {"out",        required_argument, 0, 'o', "output file"},
     {0, 0, 0, 0, 0}
@@ -63,6 +64,7 @@ void print_usage() {
 
 int main(int argc,char**argv) {
     string hyp_file;
+    string hyp_bi_file;
     string ref_file;
     string out_file;
     vector<option> options;
@@ -81,6 +83,7 @@ int main(int argc,char**argv) {
             case 0:                                         break;
             case 'h': print_usage();                        return 0;
             case 's': hyp_file = string(optarg);            break;
+            case 'b': hyp_bi_file = string(optarg);         break;
             case 't': ref_file = string(optarg);            break;
             case 'o': out_file = string(optarg);            break;
             default:                                        abort();
@@ -95,6 +98,7 @@ int main(int argc,char**argv) {
     string line;
     ifstream hypFile(hyp_file);
     string hyp_data;
+    string hyp_bi_data;
     string ref_data;
     if ( hypFile ) 
     {
@@ -103,6 +107,19 @@ int main(int argc,char**argv) {
         while ( getline( hypFile, line ) )
         { 
             hyp_data = hyp_data + line + "\n";
+        }
+    }
+    if ((int)hyp_bi_file.size() > 0) 
+    {
+        ifstream hypBiFile(hyp_bi_file);
+        if ( hypBiFile ) 
+        {
+            hyp_bi_data="";
+            line="";
+            while ( getline( hypBiFile, line ) )
+            { 
+                hyp_bi_data = hyp_bi_data + line + "\n";
+            }
         }
     }
 
@@ -123,7 +140,7 @@ int main(int argc,char**argv) {
     bool human=false;
     MwerSegmenter ms(maxER, human);
     string result;
-    ms.mwerAlign(ref_data, hyp_data, result);
+    ms.mwerAlign(ref_data, hyp_data, hyp_bi_data, result);
     ofstream outFile(out_file);
     if ( outFile ) 
     {    

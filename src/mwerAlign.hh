@@ -29,6 +29,7 @@ public:
   }
   ~MwerSegmenter() { delete(E); }
   void mwerAlign(const std::string& ref, const std::string& hyp, std::string& result);
+  void mwerAlign(const std::string& ref, const std::string& hyp, const std::string& hypBi, std::string& result);
 
 };
 
